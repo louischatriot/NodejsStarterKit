@@ -9864,6 +9864,7 @@ function
   // Code of the main module begins here
   domReady(function () {
     console.log("Hello world!");
+    console.log($);
   });
 
 });
