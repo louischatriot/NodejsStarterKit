@@ -9,6 +9,7 @@ Starter kit I use on my side projects to create websites/api with nodejs and exp
 * hogan as rendering engine, wrapped in a 'customHogan' module that enables the use of partials and layouts with Express (not possible with hogan or consolidate).
 * underscore as we always need it :)
 * mocha and chai for testing, plus a dummy test. All tests can be run with `make test`.
+* async for flow control. Especially great for long tests that would make for some callback hell.
 
 
 # Client-side-includes
