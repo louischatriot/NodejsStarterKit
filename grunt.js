@@ -59,11 +59,11 @@ module.exports = function(grunt) {
   , requirejs: { clientjs: { options: { optimize: 'none'
                                       , preserveLicenseComments: false
                                       , inlineText: true
-                                      //, mainConfigFile: 'assets/js/config.requirejs.js'
+                                      , mainConfigFile: 'assets/js/config.requirejs.js'
                                       , namespace: 'starterkit'
                                       , name: 'vendor/require/almond'
                                       , include: ['modules/main']
-                                      , out: '../dist/clientjs.js'
+                                      , out: 'assets/dist/clientjs.js'
                                       }
                            }
                }

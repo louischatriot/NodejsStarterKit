@@ -15,5 +15,5 @@ requirejs.config({
            }
   //, shim: { bootstrap: ['jquery']
           //}
-  , baseUrl: 'assets/js'
+  , baseUrl: '.'
 });
