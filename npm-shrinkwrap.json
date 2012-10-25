@@ -107,6 +107,9 @@
         }
       }
     },
+    "requirejs": {
+      "version": "2.0.6"
+    },
     "grunt-contrib": {
       "version": "0.1.4",
       "dependencies": {
@@ -430,9 +433,6 @@
               "version": "1.0.0"
             }
           }
-        },
-        "requirejs": {
-          "version": "2.1.1"
         },
         "handlebars": {
           "version": "1.0.7",
