@@ -13,10 +13,7 @@
                   , "chai": "1.0.x"
                   , "mocha": "1.4.x"
 
-                  , "grunt-context": "latest"
-                  , "grunt-contrib": "latest"
-                  , "grunt-growl": "0.1.2"
-                  , "requirejs": "2.0.x"
+                  , "grunt-contrib": "0.1.4"
                   }
 , "scripts": { "test": "make test" }
 , "main": "server"

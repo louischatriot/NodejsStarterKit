@@ -5,7 +5,7 @@ var express = require('express')
   , customHogan = require('./lib/customHogan')
   , middleware = require('./lib/middleware')
   , routes = require('./lib/routes')
-  , data = require('./object/createObject');
+  ;
 
 
 app = express();

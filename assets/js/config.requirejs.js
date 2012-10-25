@@ -14,7 +14,6 @@ requirejs.config({
            , templates: 'templates'
            }
   , shim: { bootstrap: ['jquery']
-          , datepicker: ['jquery']
           }
-  , baseUrl: '../src'
+  , baseUrl: 'assets/js'
 });

@@ -1,5 +1,9 @@
 module.exports = function(grunt) {
 
+  // Load grunt-contrib, which contains requirejs
+  grunt.loadNpmTasks('grunt-context');
+  grunt.loadNpmTasks('grunt-contrib');
+
   // Configuration of the tasks we use
   grunt.initConfig({
     // Config for the dummy task, to show how it works
@@ -41,6 +45,20 @@ module.exports = function(grunt) {
   , lint: { requireConfig: ['assets/js/config.requirejs.js']
           }
 
+    // requireJS config
+    // https://github.com/gruntjs/grunt-contrib
+    // pretty much the same as with requireJS without grunt
+  , requirejs: { clientjs: { options: { optimize: 'none'
+                                      , preserveLicenseComments: false
+                                      , inlineText: true
+                                      , mainConfigFile: 'assets/js/config.requirejs.js'
+                                      , namespace: 'starterkit'
+                                      , name: 'vendor/require/almond'
+                                      , include: ['modules/main']
+                                      , out: '../dist/clientjs.js'
+                                      }
+                           }
+               }
 
   });
 
@@ -51,6 +69,6 @@ module.exports = function(grunt) {
     console.log(this.data);
   });
 
-  grunt.registerTask('default', 'dummy:test');
+  grunt.registerTask('default', 'requirejs:clientjs');
 
 };
