@@ -4,9 +4,9 @@ Nodejs Starter Kit
 Bundle of modules and config files for nodejs that enable you to launch a website/webapp/API running on nodejs right away. I use this for all my side projects, when I don't want to spend a few days on architecture.
 
 # Installing
-1) `git clone` wherever you wan.t  
+1) `git clone` wherever you want.  
 2) `npm install`.  
-2bis) Only if you're want rich client-side JS - `npm install -g grunt`. This will install grunt globally on your machine, so that you can use the already-configured requirejs build to manage your JS modules. More info on requireJS [here](http://requirejs.org/).  
+2bis) Only if you're want rich client-side JS - `npm install -g grunt`. This will install [grunt](http://gruntjs.com/) globally on your machine, so that you can use the already-configured [requirejs](http://requirejs.org/) build to manage your JS modules. More info on requireJS [here](http://requirejs.org/).  
 3) You're set!  
 
 
@@ -21,4 +21,4 @@ Bundle of modules and config files for nodejs that enable you to launch a websit
 
 
 # Client-side
-* A basic Grunt
+* A basic gruntfile that lints, compiles with requirejs and uglify all client-side javascript in a single, minified file
