@@ -1,0 +1,19 @@
+{ "name": "erasme"
+, "private": true
+, "version": "1.0.0"
+, "author": "Louis Chatriot"
+, "contributors": [ "Louis Chatriot" ]
+, "description": "Erasme"
+, "keywords": ["erasme"]
+, "engines": { "node": "0.8.2", "npm": "1.1.42" }
+, "dependencies": { "async": "0.1.x"
+                  , "express": "3.0.0rc5"
+                  , "hogan.js": "2.0.x"
+                  , "underscore": "1.3.x"
+                  , "chai": "1.0.x"
+                  , "mocha": "1.4.x"
+                  }
+, "scripts": { "test": "make test" }
+, "main": "server"
+, "licence": "Proprietary license, Louis Chatriot"
+}
