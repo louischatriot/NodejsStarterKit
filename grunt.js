@@ -1,8 +1,16 @@
 module.exports = function(grunt) {
 
   // Load grunt-contrib, which contains requirejs
-  grunt.loadNpmTasks('grunt-context');
   grunt.loadNpmTasks('grunt-contrib');
+
+
+  // Example Grunt multi task
+  grunt.registerMultiTask('dummy', 'Do something', function () {
+    console.log("Hello world");
+    console.log(this.target);
+    console.log(this.data);
+  });
+
 
   // Configuration of the tasks we use
   grunt.initConfig({
@@ -51,7 +59,7 @@ module.exports = function(grunt) {
   , requirejs: { clientjs: { options: { optimize: 'none'
                                       , preserveLicenseComments: false
                                       , inlineText: true
-                                      , mainConfigFile: 'assets/js/config.requirejs.js'
+                                      //, mainConfigFile: 'assets/js/config.requirejs.js'
                                       , namespace: 'starterkit'
                                       , name: 'vendor/require/almond'
                                       , include: ['modules/main']
@@ -60,13 +68,6 @@ module.exports = function(grunt) {
                            }
                }
 
-  });
-
-  // Example Grunt multi task
-  grunt.registerMultiTask('dummy', 'Do something', function () {
-    console.log("Hello world");
-    console.log(this.target);
-    console.log(this.data);
   });
 
   grunt.registerTask('default', 'requirejs:clientjs');
