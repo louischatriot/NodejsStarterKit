@@ -17,6 +17,16 @@ module.exports = function(grunt) {
     // Config for the dummy task, to show how it works
     dummy: { test: [ 1, 2, 4, 8, 16 ] }
 
+    // Clean dist folder
+  , clean: { dist: ['assets/dist'] }
+
+    // Copy all static files
+  , copy: { images: { files: { 'assets/dist/': ['assets/img/*'] }
+                    }
+          , css: { files: { 'assets/dist/': ['assets/css/*'] }
+                 }
+          }
+
     // JSHint configuration
     // see here for explanation: http://www.jshint.com/options/
   , jshint: {
@@ -36,14 +46,17 @@ module.exports = function(grunt) {
                , trailing: true
                , undef: true
                }
-    , globals: { // needed for requireJS
+    , globals: { // Needed for requireJS
                  define: true
                , require: true
                , requirejs: true
                , has: true
                , module: true
-               // needed for accessing env variables in gruntfile
+               // Needed for accessing env variables in gruntfile
                , process: true
+               // Needed for tests
+               , describe: true
+               , it: true
                }
     }
 
@@ -51,6 +64,8 @@ module.exports = function(grunt) {
     // You can change the options for this task, by reading this:
     // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md
   , lint: { requireConfig: ['assets/js/config.requirejs.js']
+          , clientCode: ['assets/js/modules/*.js']
+          , apiCode: ['./*.js', 'lib/*.js', 'object/*.js', 'routes/*.js', 'test/*.js']
           }
 
     // requireJS config
@@ -63,13 +78,24 @@ module.exports = function(grunt) {
                                       , namespace: 'starterkit'
                                       , name: 'vendor/require/almond'
                                       , include: ['modules/main']
-                                      , out: 'assets/dist/clientjs.js'
+                                      , out: 'assets/dist/simulateur.js'
                                       }
                            }
                }
 
   });
 
-  grunt.registerTask('default', 'requirejs:clientjs');
+
+
+  /*
+   * Define our tasks
+   */
+  grunt.registerTask('js', 'lint requirejs:clientjs');  // JS task lints all the code and create our javascript bundle
+  grunt.registerTask('all', 'lint clean js copy');
+
+
+  // Default task: DO EVERYTHING!
+  grunt.registerTask('default', 'all');
+
 
 };
