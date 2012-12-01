@@ -11,9 +11,11 @@ var express = require('express')
 app = express();
 
 // Used for HTML templating
-app.engine('mustache', customHogan.render); // Assign Hogan engine to .mustache files
-app.set('view engine', 'mustache'); // Set mustache as the default extension
-app.set('views', config.templatesDir);
+h4e.setup({ app: app
+          , extension: 'mustache'
+          , baseDir: config.templatesDir
+          , toCompile: ['website']
+          });
 
 // Trust the nginx proxy
 app.enable('trust proxy');
@@ -57,21 +59,19 @@ app.launchServer = function (cb) {
   var callback = cb ? cb : function () {}
     , self = this;
 
-  customHogan.readAndCompileTemplates('website', function () {
-    self.apiServer = http.createServer(self);   // Let's not call it 'server' we never know if express will want to use this variable!
+  self.apiServer = http.createServer(self);   // Let's not call it 'server' we never know if express will want to use this variable!
 
-    // Handle any connection error gracefully
-    self.apiServer.on('error', function () {
-      console.log("An error occured while launching the server, probably a server is already running on the same port!");
-      process.exit(1);
-    });
-
-    // Begin to listen. If the callback gets called, it means the server was successfully launched
-    self.apiServer.listen.apply(self.apiServer, [config.svPort, function() {
-      console.log('Server %s launched in %s environment, on port %s', self.name, config.env, config.svPort);
-      callback();
-    }]);
+  // Handle any connection error gracefully
+  self.apiServer.on('error', function () {
+    console.log("An error occured while launching the server, probably a server is already running on the same port!");
+    process.exit(1);
   });
+
+  // Begin to listen. If the callback gets called, it means the server was successfully launched
+  self.apiServer.listen.apply(self.apiServer, [config.svPort, function() {
+    console.log('Server %s launched in %s environment, on port %s', self.name, config.env, config.svPort);
+    callback();
+  }]);
 }
 
 
