@@ -32,7 +32,7 @@ app.use(middleware.handleErrors);  // Use middleware to handle errors
 
 
 // Sample route
-app.get('/', routes.getHome)
+app.get('/', routes.getHome);
 
 
 
@@ -72,7 +72,7 @@ app.launchServer = function (cb) {
     console.log('Server %s launched in %s environment, on port %s', self.name, config.env, config.svPort);
     callback();
   }]);
-}
+};
 
 
 /*
@@ -85,11 +85,11 @@ app.stopServer = function (cb) {
 
   self.apiServer.close(function () {
     self.db.closeDatabaseConnection(function () {
-      bunyan.info('Server was stopped and connection to the database closed');
+      console.log('Server was stopped and connection to the database closed');
       callback();
     });
   });
-}
+};
 
 
 /*
@@ -108,7 +108,7 @@ if (module.parent === null) { // Code to execute only when running as main
  */
 //process.on('SIGINT', function () {
   //app.stopServer(function () {
-    //bunyan.info('Exiting process');
+    //console.log('Exiting process');
     //process.exit(0);
   //});
 //});
