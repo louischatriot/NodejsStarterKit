@@ -2,7 +2,7 @@ var express = require('express')
   , http = require('http')
   , app
   , config = require('./lib/config')
-  , customHogan = require('./lib/customHogan')
+  , h4e = require('h4e')
   , middleware = require('./lib/middleware')
   , routes = require('./lib/routes')
   ;
